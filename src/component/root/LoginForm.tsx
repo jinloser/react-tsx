@@ -27,9 +27,7 @@ class Login extends React.Component<{ form: any, history: any }> {
 
     private handleChange = e => {
         this.setState(
-            {
-                checkNick: e.target.checked,
-            },
+            { checkNick: e.target.checked, },
             () => {
                 this.props.form.validateFields(['nickname'], { force: true });
             },
