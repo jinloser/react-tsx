@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './LoginForm.css';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 
 const formItemLayout = {
     labelCol: { span: 4 },
@@ -20,7 +20,7 @@ class Login extends React.Component<{ form: any, history: any }> {
     private check = () => {
         this.props.form.validateFields(err => {
             if (!err) {
-                this.props.history.push("MainFrame/");
+                this.props.history.push("/");
             }
         });
     };
@@ -29,7 +29,7 @@ class Login extends React.Component<{ form: any, history: any }> {
         this.setState(
             { checkNick: e.target.checked, },
             () => {
-                this.props.form.validateFields(['nickname'], { force: true });
+                this.props.form.validateFields(['nickname']);
             },
         );
     };
@@ -57,11 +57,6 @@ class Login extends React.Component<{ form: any, history: any }> {
                             },
                         ],
                     })(<Input placeholder="Please input your nickname" />)}
-                </Form.Item>
-                <Form.Item {...formTailLayout}>
-                    <Checkbox checked={this.state.checkNick} onChange={this.handleChange}>
-                        Nickname is required
-                    </Checkbox>
                 </Form.Item>
                 <Form.Item {...formTailLayout}>
                     <Button type="primary" onClick={this.check}>
